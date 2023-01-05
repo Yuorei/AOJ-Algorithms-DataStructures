@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define M 1000187
+#define M 1000187 //素数
 #define L 14
 
 char H[M][L]; /* Hash Table */
@@ -29,8 +29,8 @@ int h1(int key){
 int h2(int key){
     return 1+(key%(M-1));
 }
-int h(int key,int i){ 
-    return (h1(key)+ i * h2(key))% M ;
+int h(int key,int i){
+    return (h1(key)+ i * h2(key))% M ; // ()のつけ忘れに注意
 }
 
 int find(char str[]){
