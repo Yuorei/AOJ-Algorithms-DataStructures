@@ -1,1 +1,2 @@
 # AOJ-Algorithms-DataStructures
+AOJのアルゴリズムとデータ構造を解いた問題のリポジトリです
