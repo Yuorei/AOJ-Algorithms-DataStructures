@@ -2,14 +2,10 @@
 #define MAX 100
 #define INF 10000000
 
-// typedef struct {
-//     int length;
-// } P;
 int n;
 int p[MAX];
 int m[MAX][MAX];
 int main(){
-    int n;
     scanf("%d",&n);
     for(int i=0;i<n;i++){
         scanf("%d %d",&p[i],&p[i+1]);
@@ -17,12 +13,10 @@ int main(){
     matrrixChainOrder();
     printf("%d\n",m[1][n]);
     return 0;
-    
+
 }
 
 void matrrixChainOrder(){
-    
-    
     int j,q;
     for(int i=1;i<=n;i++){
         m[i][i]=0;
@@ -31,7 +25,7 @@ void matrrixChainOrder(){
         for(int i=1;i<=n-l+1;i++){
             j =i+l-1;
             m[i][j]=INF;
-            for(int k = i;i<=j-1;k++){
+            for(int k = i;k<=j-1;k++){
                 q=m[i][k]+m[k+1][j]+p[i-1]*p[k]*p[j];
                 m[i][j]=((m[i][j] <= q)?  m[i][j] : q);
             }
