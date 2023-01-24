@@ -1,17 +1,18 @@
 #include <stdio.h>
+#define QUANTITY 500000
+#define INFTY 1000000000
+
 typedef struct  {
     char mark;
     int num;
 } DATA;
-// int partition(DATA *[],int , int );
-// void quicksort(DATA *[], int ,int );
 
-int partition(DATA *A,int p, int r){
+int partition(DATA A[],int p, int r){
     DATA tem;
     int x,i;
     x=A[r].num;
     i=p-1;
-    for(int j =p;i<r;i++){
+    for(int j =p;j<r;j++){
         if (A[j].num<=x){
             i+=1;
             tem=A[i];
@@ -24,7 +25,7 @@ int partition(DATA *A,int p, int r){
     A[r]=tem;
     return i+1;
 }
-void quickSort(DATA *A, int p,int r){
+void quickSort(DATA A[], int p,int r){
     int q;
     if (p < r){
         q = partition(A, p, r);
@@ -36,14 +37,17 @@ void quickSort(DATA *A, int p,int r){
 
 int main(){
     int n,q;
+    char s[2];
     DATA data[1000000];
     scanf("%d",&n);
-    for(int i;i<n;i++){
-        scanf("%c %d",&data[i].mark,&data[i].num);
+    for(int i=0;i<n;i++){
+        scanf("%s %d",s,&data[i].num);
+        data[i].mark=s[0];
     }
     quickSort(data, 0, n-1);
-    printf("not\n");
+    printf("Not stable\n");
     for(int i; i<n;i++){
-        printf("%c %d",data[i].mark,data[i].num);
+        printf("%c %d\n",data[i].mark,data[i].num);
     }
 }
+
