@@ -2,55 +2,74 @@
 #define MAX 2000
 #define BLACK 1
 #define WHITE 0
-#define INF 9999999999
+#define INF 99999
 #define NIL -1
+void prim(void);
 int n;
 int T[MAX][MAX];
+int pi[MAX];
+int d[MAX];
+int color[MAX];
+
 int main()
 {
-    scanf("%d" & n);
+    int cost = 0, tmp;
+    scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            scanf("%d", &T[i][j]);
+
+            scanf("%d", &tmp);
+            if (tmp == NIL)
+            {
+                tmp = INF;
+            }
+            T[i][j] = tmp;
         }
     }
-
+    prim();
+    for (int i = 0; i < n; i++)
+    {
+        cost += d[i];
+    }
+    printf("%d\n", cost);
     return 0;
 }
 
-prim(G, w, r)
+void prim(void)
 {
-for each u in G
+    int mincost, u;
+    for (int i = 0; i < n; i++)
     {
-        d[u] = INF;
-        pi[u] = NIL;
-        color[u] = WHITE;
+        d[i] = INF;
+        pi[i] = NIL;
+        color[i] = WHITE;
     }
-d[r] = 0;
-while (1)
-{
-    mincost = INF;
-    for (each i in G)
+    d[0] = 0;
+    while (1)
     {
-        if (color[i] != BLACK and d[i] < mincost)
+        mincost = INF;
+        for (int i = 0; i < n; i++)
         {
-            mincost = d[i] u = i;
+            if (color[i] != BLACK && d[i] < mincost)
+            {
+                mincost = d[i];
+                u = i;
+            }
+        }
+        if (mincost == INF)
+        {
+            break;
+        }
+        color[u] = BLACK;
+        for (int i = 0; i < n; i++)
+        {
+            if (color[i] != BLACK && T[u][i] < d[i])
+            {
+                pi[i] = u;
+                d[i] = T[u][i];
+            }
         }
     }
-    if (mincost == INF)
-    {
-        break;
-    }
-    color[u] = BLACK;
-    for (each v in Adj[u])
-    {
-        if (color[v] != BLACK and w(u, v) < d[v])
-        {
-            pi[v] = u;
-            d[v] = w(u, v);
-        }
-    }
-}
 }
