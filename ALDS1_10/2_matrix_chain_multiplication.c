@@ -13,6 +13,7 @@ int main(){
     matrrixChainOrder();
     printf("%d\n",m[1][n]);
     return 0;
+
 }
 
 void matrrixChainOrder(){
