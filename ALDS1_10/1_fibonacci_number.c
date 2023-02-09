@@ -1,5 +1,6 @@
 #include <stdio.h>
-#define MAX 44
+#define MAX 90
+int fibonacci(int);
 
 int main(){
     int n;

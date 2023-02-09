@@ -2,6 +2,8 @@
 #define QUANTITY 500000
 #define INFTY 1000000000
 int count = 0;
+void mergeSort(int *, int , int );
+void merge(int*, int, int, int);
 
 int main()
 {
